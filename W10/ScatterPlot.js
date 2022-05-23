@@ -24,8 +24,6 @@ class ScatterPlot {
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
 
-        self.points = self.chart.append('g');
-
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
@@ -99,7 +97,7 @@ class ScatterPlot {
     render() {
         let self = this;
 
-        self.points.selectAll("circle")
+        self.points = self.chart.selectAll("circle")
             .data(self.data)
             .enter()
             .append("circle")
